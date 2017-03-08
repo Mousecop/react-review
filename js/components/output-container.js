@@ -4,6 +4,10 @@ import uuid from 'uuid';
 import faker from 'faker';
 import Output from './output';
 
+/* Chat bubbles and icons */
+import FaCommentO from 'react-icons/lib/fa/comments-o';
+
+
 export default class OutputContainer extends React.Component {
     constructor() {
         super();
@@ -33,34 +37,23 @@ export default class OutputContainer extends React.Component {
             convoLog: newLog,
             text: ""
         });
+        if(this.state.text === "") {
+            alert("Not Very Chatty");
+        }
     }
  
     render() {
-        const roboStyle ={
-            backgroundColor : '#3ea07f',
-            width: '25%',
-            borderRadius: '8px',
-            display: 'block',
-            padding: '8px'
-        }
-        const userStyle = {
-            backgroundColor: '#b9b6b6',
-            width: '25%',
-            borderRadius: '8px',
-            float: 'right',
-            display: 'block',
-            padding: '8px'
-        }
          const convoMap = this.state.convoLog.map(item => {
            return (
                <div className="convo">
-                    <p className="singleMessage" style={userStyle}>{item.message}</p>
-                    <p className= "roboMessage" style={roboStyle}>{item.roboMessage}</p>
+                    <p className="singleMessage">{item.message}</p>
+                    <p className= "roboMessage">{item.roboMessage}</p>
                 </div>
             );
         });
         return (
             <div className="outputArea">
+                <h1 className="Chatty Cathy">Talk to Chatty Cathy</h1>
                 {convoMap}
                 <Input onSubmit={this.onSubmit} onChange={this.onChange}/>
             </div>
