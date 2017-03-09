@@ -44,17 +44,12 @@ export default class OutputContainer extends React.Component {
  
     render() {
          const convoMap = this.state.convoLog.map(item => {
-           return (
-               <div className="convo">
-                    <p className="singleMessage">{item.message}</p>
-                    <p className= "roboMessage">{item.roboMessage}</p>
-                </div>
-            );
+           return <Output message={item.message} roboMessage={item.roboMessage}/>
         });
         return (
             <div className="outputArea">
                 <h1 className="Chatty Cathy">Talk to Chatty Cathy</h1>
-                {convoMap}
+                {convoMap}          
                 <Input onSubmit={this.onSubmit} onChange={this.onChange}/>
             </div>
         );
