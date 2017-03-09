@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default function Output(props) {
-    console.log(props.convoMap);
     return (
-        <div className="output">
-            {props.convoMap}
+        <div className="convo">
+            <p className="singleMessage">{props.message}</p>
+            <p className= "roboMessage">{props.roboMessage}</p>
         </div>
-    )
+    );
 }
